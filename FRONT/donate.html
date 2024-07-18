@@ -22,8 +22,8 @@
            
     <fieldset>
         <legend>Datos de Quien Dona</legend>
-        <label for="nombreDonante">Nombre</label>
-            <input type="text" id="nombreDonante" name="nombreDonante" placeholder="Nombre" required>
+        <label for="nombreDonante">Nombre</label>  <input type="hidden" name="donante_id" value="nombreDonante">
+            <input type="text" id="nombreDonante" name="nombreDonante" placeholder="Nombre"  required>
             <label for="apellido">Apellido</label>
             <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
             <label for="dni">Número de DNI</label>
@@ -36,7 +36,7 @@
             <select id="provincia" name="provincia" required>
                 <option value="">Seleccione la provincia</option>
                 <option value="bs as">Buenos Aires</option>
-                <option value="coroba">Cordoba</option>
+                <option value="cordoba">Cordoba</option>
                 <option value="salta">Salta</option>
             </select>
             <label for="direccion">Dirección</label>
