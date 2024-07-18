@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donación de Medicamentos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo de la empresa" id="logo">
+        <h1>Donación de Medicamentos</h1>
+    </header>
+    
+    <main>
+        <form action="../BACK/submit_donation.php" method="POST" enctype="multipart/form-data" class="medication-form">
+        
+            <!-- Logo de la Asociación -->
+ <img src="images/logo.png" alt="Logo de la asociacion" id="associationLogo" name="associationLogo" readonly required>
+     
+ <!-- Nombre del Usuario --><p for="userName">Nombre del Usuario<id="userName" name="userName" readonly required>
+           
+    <fieldset>
+        <legend>Datos de Quien Dona</legend>
+        <label for="nombreDonante">Nombre</label>
+            <input type="text" id="nombreDonante" name="nombreDonante" placeholder="Nombre" required>
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+            <label for="dni">Número de DNI</label>
+            <input type="text" id="dni" name="dni" placeholder="Número de DNI" required>
+        <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Número de Teléfono" required>
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+                <label for="provincia">Provincia</label>
+            <select id="provincia" name="provincia" required>
+                <option value="">Seleccione la provincia</option>
+                <option value="bs as">Buenos Aires</option>
+                <option value="coroba">Cordoba</option>
+                <option value="salta">Salta</option>
+            </select>
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" placeholder="Dirección" required>
+            <label for="cp">Código Postal</label>
+            <input type="number" id="cp" name="cp" placeholder="Código Postal" required>
+
+            <fieldset>
+                <legend>Medicamento Donado</legend>
+                <label for="nombreMedicamento">Nombre</label>
+                <select id="nombreMedicamento" name="nombreMedicamento" required>
+                    <option value="Alendronato">Alendronato</option>
+                    <option value="Amlodipina">Amlodipina</option>
+                    <option value="Amoxicilina">Amoxicilina</option>
+                    <option value="Apixabán">Apixabán</option>
+                    <option value="Atorvastatina">Atorvastatina</option>
+                    <option value="Bromuro de ipratropio">Bromuro de ipratropio</option>
+                    <option value="Candesartán">Candesartán</option>
+                    <option value="Carvedilol">Carvedilol</option>
+                    <option value="Ciprofloxacino">Ciprofloxacino</option>
+                    <option value="Citalopram">Citalopram</option>
+                    <option value="Clopidogrel">Clopidogrel</option>
+                    <option value="Diclofenac">Diclofenac</option>
+                    <option value="Dutasterida">Dutasterida</option>
+                    <option value="Enalapril">Enalapril</option>
+                    <option value="Escitalopram">Escitalopram</option>
+                    <option value="Esomeprazol">Esomeprazol</option>
+                    <option value="Ezetimiba">Ezetimiba</option>
+                    <option value="Fenofibrato">Fenofibrato</option>
+                    <option value="Fluoxetina">Fluoxetina</option>
+                    <option value="Furosemida">Furosemida</option>
+                    <option value="Gabapentina">Gabapentina</option>
+                    <option value="Hidroclorotiazida">Hidroclorotiazida</option>
+                    <option value="Ibuprofeno">Ibuprofeno</option>
+                    <option value="Lansoprazol">Lansoprazol</option>
+                    <option value="Latanoprost">Latanoprost</option>
+                    <option value="Levofloxacino">Levofloxacino</option>
+                    <option value="Levotiroxina">Levotiroxina</option>
+                    <option value="Liraglutida">Liraglutida</option>
+                    <option value="Lisinopril">Lisinopril</option>
+                    <option value="Losartán">Losartán</option>
+                    <option value="Metformina">Metformina</option>
+                    <option value="Metoprolol">Metoprolol</option>
+                    <option value="Naproxeno">Naproxeno</option>
+                    <option value="Omeprazol">Omeprazol</option>
+                    <option value="Pantoprazol">Pantoprazol</option>
+                    <option value="Paracetamol">Paracetamol</option>
+                    <option value="Perindopril">Perindopril</option>
+                    <option value="Pravastatina">Pravastatina</option>
+                    <option value="Prednisona">Prednisona</option>
+                    <option value="Propranolol">Propranolol</option>
+                    <option value="Quetiapina">Quetiapina</option>
+                    <option value="Ramipril">Ramipril</option>
+                    <option value="Rosuvastatina">Rosuvastatina</option>
+                    <option value="Sertralina">Sertralina</option>
+                    <option value="Simvastatina">Simvastatina</option>
+                    <option value="Sitagliptina">Sitagliptina</option>
+                    <option value="Tadalafilo">Tadalafilo</option>
+                    <option value="Telmisartán">Telmisartán</option>
+                    <option value="Valsartán">Valsartán</option>
+                    <option value="Venlafaxina">Venlafaxina</option>
+                    <option value="Warfarina">Warfarina</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <input type="text" id="otroMedicamento" name="otroMedicamento" placeholder="Especificar otro medicamento" style="display:none;">
+                <label for="laboratorio">Laboratorio</label>
+            <input type="text" id="laboratorio" name="laboratorio" placeholder="Nombre del Laboratorio" required>
+                <label for="presentacionMedicamento">Presentación</label>
+                <select id="presentacionMedicamento" name="presentacionMedicamento" required>
+                    <option value="Tabletas">Tabletas</option>
+                    <option value="Cápsulas">Cápsulas</option>
+                    <option value="Jarabe">Jarabe</option>
+                    <option value="Inyección">Inyección</option>
+                    <option value="Crema">Crema</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <input type="text" id="otraPresentacion" name="otraPresentacion" placeholder="Especificar otra presentación" style="display:none;">
+                
+                <label for="cantidadMedicamento">Cantidad</label>
+                <input type="number" id="cantidadMedicamento" name="cantidadMedicamento" placeholder="Cantidad del Medicamento" required>
+                
+                <label for="fechaVto">Fecha de Vencimiento</label>
+                <input type="date" id="fechaVto" name="fechaVto" required>
+
+               
+            <!-- Foto de la Medicación -->
+            <div>
+                <label for="fotoMedicacion">Foto de la medicación:</label>
+                <input type="file" id="fotoMedicacion" name="fotoMedicacion" accept="image/*">
+            </div>
+
+            <!-- Botón para enviar el formulario -->
+            <div>
+                <button type="submit">Enviar Donación</button>
+            </div>
+        </form>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

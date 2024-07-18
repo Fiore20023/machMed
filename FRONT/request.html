@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedir Medicación</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<img src="images/logo.png" alt="Logo de la empresa" id="logo">
+    <h1>Pedir Medicación</h1>
+    <body>
+        <form id="requestForm" class="medication-form" action="../FRONT/request.html" method="POST" enctype="multipart/form-data">
+ <!-- Logo de la Asociación -->
+ <img src="images/logo.png" alt="Logo de la asociacion" id="associationLogo" name="associationLogo" readonly required>
+     
+ <!-- Nombre del Usuario --><p for="userName">Nombre del Usuario<id="userName" name="userName" readonly required>
+       
+
+        <fieldset>
+            <legend>Datos del Paciente</legend>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+            <label for="dni">Número de DNI</label>
+            <input type="text" id="dni" name="dni" placeholder="Número de DNI" required>
+            <label for="edad">Edad</label>
+            <input type="number" id="edad" name="edad" placeholder="Edad" required>
+            <label for="sexo">Sexo</label>
+            <select id="sexo" name="sexo" required>
+                <option value="">Seleccione Sexo</option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+                <option value="otro">Otro</option>
+            </select>
+            <input type="text" id="otroSexo" name="otroSexo" placeholder="Especificar otro sexo" style="display:none;">
+            
+            <fieldset>
+                <legend>Datos de Contacto</legend>
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Número de Teléfono" required>
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+                <label for="provincia">Provincia</label>
+            <select id="provincia" name="provincia" required>
+                <option value="">Seleccione la provincia</option>
+                <option value="bs as">Buenos Aires</option>
+                <option value="coroba">Cordoba</option>
+                <option value="salta">Salta</option>
+            </select>
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" placeholder="Dirección" required>
+            <label for="cp">Código Postal</label>
+            <input type="number" id="cp" name="cp" placeholder="Código Postal" required>
+
+            </fieldset>
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Tipo de Cobertura</legend>
+            <label for="cobertura">Cobertura</label>
+            <select id="cobertura" name="cobertura" required>
+                <option value="">Seleccione Cobertura</option>
+                <option value="publica">Pública</option>
+                <option value="obra_social">Obra Social</option>
+                <option value="prepaga">Prepaga</option>
+                <option value="incluir_salud">Incluir Salud</option>
+                <option value="pami">PAMI</option>
+                <option value="otro">Otro</option>
+            </select>
+            <input type="text" id="otroCobertura" name="otroCobertura" placeholder="Especificar otra cobertura" style="display:none;">
+            <label for="obraSocial">Obra Social</label>
+            <select id="obraSocial" name="obraSocial">
+                <option value="">Seleccione Obra Social</option>
+                <option value="OSPLAD">OSPLAD - OBRA SOCIAL PARA LA ACTIVIDAD DOCENTE</option>
+                <option value="OSPACA">OSPACA - OBRA SOCIAL DEL PERSONAL DEL AUTOMOVIL CLUB ARGENTINO</option>
+                <option value="OSPACP">OSPACP - OBRA SOCIAL DEL PERSONAL AUXILIAR DE CASAS PARTICULARES</option>
+                <option value="OSPECON">OSPECON - OBRA SOCIAL DEL PERSONAL DE LA CONSTRUCCION</option>
+                <option value="OSCHOCA">OSCHOCA - OBRA SOCIAL DE CHOFERES DE CAMIONES</option>
+                <option value="OSPEDYC">OSPEDYC - OBRA SOCIAL DEL PERSONAL DE ENTIDADES DEPORTIVAS Y CIVILES</option>
+                <option value="OSPEP">OSPEP - OBRA SOCIAL DEL PERSONAL DE LA ENSEÑANZA PRIVADA</option>
+                <option value="OSUTHGRA">OSUTHGRA - OBRA SOCIAL DE LA UNION DE TRABAJADORES DEL TURISMO, HOTELEROS Y GASTRONOMICOS DE LA REPUBLICA ARGENTINA</option>
+                <option value="OSECAC">OSECAC - OBRA SOCIAL DE LOS EMPLEADOS DE COMERCIO Y ACTIVIDADES CIVILES</option>
+                <option value="OSDEPYM">OSDEPYM - OBRA SOCIAL DE EMPRESARIOS, PROFESIONALES Y MONOTRIBUTISTAS</option>
+                <option value="otro">Otro</option>
+            </select>
+            <input type="text" id="otroObraSocial" name="otroObraSocial" placeholder="Especificar otra obra social" style="display:none;">
+            <label for="prepaga">Prepaga</label>
+            <select id="prepaga" name="prepaga">
+                <option value="">Seleccione Prepaga</option>
+                <option value="OSDE">OSDE</option>
+                <option value="GALENO">GALENO</option>
+                <option value="ACCORD SALUD">ACCORD SALUD</option>
+                <option value="OMINT">OMINT</option>
+                <option value="COBERMED">COBERMED</option>
+                <option value="MEDIFE">MEDIFE</option>
+                <option value="SANCOR SALUD">SANCOR SALUD</option>
+                <option value="SWISS MEDICAL">SWISS MEDICAL</option>
+                <option value="otro">Otro</option>
+            </select>
+            <input type="text" id="otroPrepaga" name="otroPrepaga" placeholder="Especificar otra prepaga" style="display:none;">
+        </fieldset>
+
+        <fieldset>
+            <legend>Enfermedad/Diagnóstico</legend>
+            <label for="diagnostico">Diagnóstico</label>
+            <select id="diagnostico" name="diagnostico[]" multiple required>
+                <option value="Astrocitomas infantiles">Astrocitomas infantiles</option>
+                <option value="Cáncer cérvix uterino">Cáncer cérvix uterino</option>
+                <option value="Cáncer de ano">Cáncer de ano</option>
+                <option value="Cáncer de cabeza y cuello">Cáncer de cabeza y cuello</option>
+                <option value="Cáncer de cavidad nasal y de seno paranasal">Cáncer de cavidad nasal y de seno paranasal</option>
+                <option value="Cáncer de cerebro">Cáncer de cerebro</option>
+                <option value="Cáncer de colon">Cáncer de colon</option>
+                <option value="Cáncer de colorrectal">Cáncer de colorrectal</option>
+                <option value="Cáncer de corteza suprarrenal">Cáncer de corteza suprarrenal</option>
+                <option value="Cáncer de endometrio">Cáncer de endometrio</option>
+                <option value="Cáncer de esófago">Cáncer de esófago</option>
+                <option value="Cáncer de estómago">Cáncer de estómago</option>
+                <option value="Cáncer de feocromocitoma">Cáncer de feocromocitoma</option>
+                <option value="Cáncer de garganta">Cáncer de garganta</option>
+                <option value="Cáncer de hígado">Cáncer de hígado</option>
+                <option value="Cáncer de hipofaringe">Cáncer de hipofaringe</option>
+                <option value="Cáncer de hipófisis">Cáncer de hipófisis</option>
+                <option value="Cáncer de hueso">Cáncer de hueso</option>
+                <option value="Cáncer de intestino">Cáncer de intestino</option>
+                <option value="Cáncer de intestino delgado">Cáncer de intestino delgado</option>
+                <option value="Cáncer de mama">Cáncer de mama</option>
+                <option value="Cáncer de nasofaringe">Cáncer de nasofaringe</option>
+                <option value="Cáncer de ojo">Cáncer de ojo</option>
+                <option value="Cáncer de oropharyngeal">Cáncer de oropharyngeal</option>
+                <option value="Cáncer de ovario">Cáncer de ovario</option>
+                <option value="Cáncer de páncreas">Cáncer de páncreas</option>
+                <option value="Cáncer de paratiroides">Cáncer de paratiroides</option>
+                <option value="Cáncer de pene">Cáncer de pene</option>
+                <option value="Cáncer de piel">Cáncer de piel</option>
+                <option value="Cáncer de próstata">Cáncer de próstata</option>
+                <option value="Cáncer de pulmón">Cáncer de pulmón</option>
+                <option value="Cáncer de recto">Cáncer de recto</option>
+                <option value="Cáncer de riñón">Cáncer de riñón</option>
+                <option value="Cáncer de testículo">Cáncer de testículo</option>
+                <option value="Cáncer de tiroides">Cáncer de tiroides</option>
+                <option value="Cáncer de uretra">Cáncer de uretra</option>
+                <option value="Cáncer de útero">Cáncer de útero</option>
+                <option value="Cáncer de vejiga">Cáncer de vejiga</option>
+                <option value="Cáncer oral">Cáncer oral</option>
+                <option value="Cáncer orofaríngeo">Cáncer orofaríngeo</option>
+                <option value="Carcinoma adrenocortical">Carcinoma adrenocortical</option>
+                <option value="Carcinoma basocelular">Carcinoma basocelular</option>
+                <option value="Carcinoma de células de Merkel">Carcinoma de células de Merkel</option>
+                <option value="Carcinoma de células escamosas de piel">Carcinoma de células escamosas de piel</option>
+                <option value="Carcinoma espinocelular">Carcinoma espinocelular</option>
+                <option value="Carcinoma medular de tiroides">Carcinoma medular de tiroides</option>
+                <option value="Carcinoma neuroendocrino">Carcinoma neuroendocrino</option>
+                <option value="Carcinoma papilar">Carcinoma papilar</option>
+                <option value="Carcinoma sebáceo">Carcinoma sebáceo</option>
+                <option value="Glioma del tronco encefálico">Glioma del tronco encefálico</option>
+                <option value="Linfoma">Linfoma</option>
+                <option value="Linfoma cutáneo de células T">Linfoma cutáneo de células T</option>
+                <option value="Melanoma">Melanoma</option>
+                <option value="Neuroblastoma">Neuroblastoma</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <input type="text" id="otroDiagnostico" name="otroDiagnostico" placeholder="Especificar otro diagnóstico" style="display:none;">
+        </fieldset>
+
+        <fieldset>
+            <legend>Datos del Médico</legend>
+            <label for="nombreMedico">Nombre</label>
+            <input type="text" id="nombreMedico" name="nombreMedico" placeholder="Nombre del Médico" required>
+            <label for="apellidoMedico">Apellido</label>
+            <input type="text" id="apellidoMedico" name="apellidoMedico" placeholder="Apellido del Médico" required>
+            <label for="matricula">Matrícula</label>
+            <input type="text" id="matricula" name="matricula" placeholder="Número de Matrícula" required>
+        </fieldset>
+
+       
+        <fieldset>
+            <legend>Medicamento Solicitado</legend>
+            <label for="nombreMedicamento">Nombre</label>
+            <select id="nombreMedicamento" name="nombreMedicamento" required>
+                <option value="Alendronato">Alendronato</option>
+                <option value="Amlodipina">Amlodipina</option>
+                <option value="Amoxicilina">Amoxicilina</option>
+                <option value="Apixabán">Apixabán</option>
+                <option value="Atorvastatina">Atorvastatina</option>
+                <option value="Bromuro de ipratropio">Bromuro de ipratropio</option>
+                <option value="Candesartán">Candesartán</option>
+                <option value="Carvedilol">Carvedilol</option>
+                <option value="Ciprofloxacino">Ciprofloxacino</option>
+                <option value="Citalopram">Citalopram</option>
+                <option value="Clopidogrel">Clopidogrel</option>
+                <option value="Diclofenac">Diclofenac</option>
+                <option value="Dutasterida">Dutasterida</option>
+                <option value="Enalapril">Enalapril</option>
+                <option value="Escitalopram">Escitalopram</option>
+                <option value="Esomeprazol">Esomeprazol</option>
+                <option value="Ezetimiba">Ezetimiba</option>
+                <option value="Fenofibrato">Fenofibrato</option>
+                <option value="Fluoxetina">Fluoxetina</option>
+                <option value="Furosemida">Furosemida</option>
+                <option value="Gabapentina">Gabapentina</option>
+                <option value="Hidroclorotiazida">Hidroclorotiazida</option>
+                <option value="Ibuprofeno">Ibuprofeno</option>
+                <option value="Lansoprazol">Lansoprazol</option>
+                <option value="Latanoprost">Latanoprost</option>
+                <option value="Levofloxacino">Levofloxacino</option>
+                <option value="Levotiroxina">Levotiroxina</option>
+                <option value="Liraglutida">Liraglutida</option>
+                <option value="Lisinopril">Lisinopril</option>
+                <option value="Losartán">Losartán</option>
+                <option value="Metformina">Metformina</option>
+                <option value="Metoprolol">Metoprolol</option>
+                <option value="Naproxeno">Naproxeno</option>
+                <option value="Omeprazol">Omeprazol</option>
+                <option value="Pantoprazol">Pantoprazol</option>
+                <option value="Paracetamol">Paracetamol</option>
+                <option value="Perindopril">Perindopril</option>
+                <option value="Pravastatina">Pravastatina</option>
+                <option value="Prednisona">Prednisona</option>
+                <option value="Propranolol">Propranolol</option>
+                <option value="Quetiapina">Quetiapina</option>
+                <option value="Ramipril">Ramipril</option>
+                <option value="Rosuvastatina">Rosuvastatina</option>
+                <option value="Sertralina">Sertralina</option>
+                <option value="Simvastatina">Simvastatina</option>
+                <option value="Sitagliptina">Sitagliptina</option>
+                <option value="Tadalafilo">Tadalafilo</option>
+                <option value="Telmisartán">Telmisartán</option>
+                <option value="Valsartán">Valsartán</option>
+                <option value="Venlafaxina">Venlafaxina</option>
+                <option value="Warfarina">Warfarina</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <input type="text" id="otroMedicamento" name="otroMedicamento" placeholder="Especificar otro medicamento" style="display:none;">
+            <label for="laboratorio">Laboratorio</label>
+            <input type="text" id="laboratorio" name="laboratorio" placeholder="Nombre del Laboratorio" required>
+            <label for="presentacionMedicamento">Presentación</label>
+            <select id="presentacionMedicamento" name="presentacionMedicamento" required>
+                <option value="Tabletas">Tabletas</option>
+                <option value="Cápsulas">Cápsulas</option>
+                <option value="Jarabe">Jarabe</option>
+                <option value="Inyección">Inyección</option>
+                <option value="Crema">Crema</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <input type="text" id="otraPresentacion" name="otraPresentacion" placeholder="Especificar otra presentación" style="display:none;">
+            
+            <label for="cantidadMedicamento">Cantidad</label>
+            <input type="number" id="cantidadMedicamento" name="cantidadMedicamento" placeholder="Cantidad del Medicamento" required>
+            <label for="fechaEntrega">Fecha de Entrega</label>
+            <input type="date" id="fechaEntrega" name="fechaEntrega" required>
+             <!-- Foto receta -->
+             <div>
+                <label for="fotoReceta">Foto de la Receta:</label>
+                <input type="file" id="fotoReceta" name="fotoReceta" accept="image/*">
+            </div>
+        </fieldset>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "name": "gateway/mach-med",
+    "autoload": {
+        "psr-4": {
+            "Gateway\\MachMed\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fiore20023",
+            "email": "fiorellasgagliardi@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
