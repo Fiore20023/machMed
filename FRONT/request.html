@@ -10,12 +10,13 @@
 <img src="images/logo.png" alt="Logo de la empresa" id="logo">
     <h1>Pedir Medicación</h1>
     <body>
-        <form id="requestForm" class="medication-form" action="../BACK/submit_request.php" method="POST" enctype="multipart/form-data">
- <!-- Logo de la Asociación -->
+        <!-- Logo de la Asociación -->
  <img src="images/logo.png" alt="Logo de la asociacion" id="associationLogo" name="associationLogo" readonly required>
      
  <!-- Nombre del Usuario --><p for="userName">Nombre del Usuario<id="userName" name="userName" readonly required>
        
+        <form id="requestForm" class="medication-form" action="../BACK/submit_request.php" method="POST" enctype="multipart/form-data">
+ 
 
         <fieldset>
             <legend>Datos del Paciente</legend>
@@ -179,8 +180,8 @@
        
         <fieldset>
             <legend>Medicamento Solicitado</legend>
-            <label for="nombreMedicamento">Nombre</label>
-            <select id="nombreMedicamento" name="nombreMedicamento" required>
+            <label for="nombreMed">Nombre</label>
+            <select id="nombreMed" name="nombreMed" required>
                 <option value="Alendronato">Alendronato</option>
                 <option value="Amlodipina">Amlodipina</option>
                 <option value="Amoxicilina">Amoxicilina</option>
@@ -237,8 +238,8 @@
             <input type="text" id="otroMedicamento" name="otroMedicamento" placeholder="Especificar otro medicamento" style="display:none;">
             <label for="laboratorio">Laboratorio</label>
             <input type="text" id="laboratorio" name="laboratorio" placeholder="Nombre del Laboratorio" required>
-            <label for="presentacionMedicamento">Presentación</label>
-            <select id="presentacionMedicamento" name="presentacionMedicamento" required>
+            <label for="presentacion">Presentación</label>
+            <select id="presentacion" name="presentacion" required>
                 <option value="Tabletas">Tabletas</option>
                 <option value="Cápsulas">Cápsulas</option>
                 <option value="Jarabe">Jarabe</option>
