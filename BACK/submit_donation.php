@@ -4,22 +4,22 @@ require 'db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Obtener datos del formulario
     $nombreDonante = $_POST['nombreDonante'];
-    $apellido = $_POST['apellido'];
+    $apellidoDonante = $_POST['apellido_donante'];
     $dni = $_POST['dni'];
     $telefono = $_POST['telefono'];
     $email = $_POST['email'];
     $provincia = $_POST['provincia'];
     $direccion = $_POST['direccion'];
     $cp = $_POST['cp'];
-    $nombreMedicamento = $_POST['nombreMedicamento'];
+    $nombreMedicamento = $_POST['nombreMed'];
     $laboratorio = $_POST['laboratorio'];
-    $presentacionMedicamento = $_POST['presentacionMedicamento'];
+    $presentacionMedicamento = $_POST['presentacion'];
     $cantidadMedicamento = $_POST['cantidadMedicamento'];
     $fechaVto = $_POST['fechaVto'];
 
-    // Verificar si el donante ya existe en la tabla `donantes`
-    $stmt = $conn->prepare("SELECT id FROM donantes WHERE nombreDonante = ? AND apellido = ? AND dni = ?");
-    $stmt->bind_param('sss', $nombreDonante, $apellido, $dni);
+    // Verificar si el donante ya existe en la tabla donantes
+    $stmt = $conn->prepare("SELECT id FROM donantes WHERE nombreDonante = ? AND apellido_donante = ? AND dni = ?");
+    $stmt->bind_param('sss', $nombreDonante, $apellidoDonante, $dni);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -28,22 +28,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $row = $result->fetch_assoc();
         $donante_id = $row['id'];
     } else {
-        // El donante no existe, insertarlo en la tabla `donantes`
+        // El donante no existe, insertarlo en la tabla donantes
         $stmt->close();
 
-        $stmt = $conn->prepare("INSERT INTO donantes (nombreDonante, apellido, dni, telefono, email, provincia, direccion, cp)
+        $stmt = $conn->prepare("INSERT INTO donantes (nombreDonante, apellido_donante, dni, telefono, email, provincia, direccion, cp)
                                VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('ssssssss', $nombreDonante, $apellido, $dni, $telefono, $email, $provincia, $direccion, $cp);
+        $stmt->bind_param('ssssssss', $nombreDonante, $apellidoDonante, $dni, $telefono, $email, $provincia, $direccion, $cp);
         $stmt->execute();
 
         // Obtener el ID del nuevo donante insertado
         $donante_id = $stmt->insert_id;
     }
 
-    // Insertar la donación en la tabla `donations`
-    $stmt = $conn->prepare("INSERT INTO donations (donante_id, nombreDonante, apellido, dni, telefono, email, provincia, direccion, cp, nombreMedicamento, laboratorio, presentacionMedicamento, cantidadMedicamento, fechaVto)
+    // Insertar la donación en la tabla donations
+    $stmt = $conn->prepare("INSERT INTO donations (donante_id, nombreDonante, apellido_donante, dni, telefono, email, provincia, direccion, cp, nombreMed, laboratorio, presentacion, cantidadMedicamento, fechaVto)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('isssssssssssis', $donante_id, $nombreDonante, $apellido, $dni, $telefono, $email, $provincia, $direccion, $cp, $nombreMedicamento, $laboratorio, $presentacionMedicamento, $cantidadMedicamento, $fechaVto);
+    $stmt->bind_param('issssssssssiss', $donante_id, $nombreDonante, $apellidoDonante, $dni, $telefono, $email, $provincia, $direccion, $cp, $nombreMedicamento, $laboratorio, $presentacionMedicamento, $cantidadMedicamento, $fechaVto);
 
     if ($stmt->execute()) {
         echo "Donación registrada exitosamente!";
@@ -57,3 +57,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Método de solicitud no válido.";
 }
 ?>
+

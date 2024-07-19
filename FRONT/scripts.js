@@ -1,49 +1,5 @@
-document.getElementById('donateButton').addEventListener('click', function() {
-    window.location.href = 'donate.html';
-});
-
-document.getElementById('requestButton').addEventListener('click', function() {
-    window.location.href = 'request.html';
-});
-
-// Handle login form submission
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Perform login and redirect to dashboard if successful
-});
-
-// Handle donate form submission
-document.getElementById('donateForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Handle donation submission
-
-    const formData = new FormData(this);
-
-    fetch('http://localhost/BACK/submit_donation.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-        alert('Donación registrada exitosamente.');
-        // Puedes agregar código adicional para limpiar el formulario o redirigir al usuario
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Hubo un error al registrar la donación.');
-    });
-});
-
-// Handle request form submission
-document.getElementById('requestForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Handle medication request submission
-
-});
-
 document.addEventListener('DOMContentLoaded', function () {
-    // Suponiendo que los datos se obtienen de una API
+    // Cargar los datos del usuario para mostrar nombre y logo
     fetch('/api/userinfo')
         .then(response => response.json())
         .then(data => {
@@ -51,19 +7,45 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('userName').textContent = data.userName;
         })
         .catch(error => console.error('Error al obtener los datos del usuario:', error));
+
+    // Cargar donaciones y pedidos desde la API
+    fetch('/api/donations')
+        .then(response => response.json())
+        .then(donations => {
+            const donationsContainer = document.getElementById('donations');
+            donations.forEach(donation => {
+                const donationElement = document.createElement('div');
+                donationElement.className = 'grid-item';
+                donationElement.innerHTML = `
+                    <img src="${donation.logoUrl || 'https://via.placeholder.com/100'}" alt="${donation.nombreDonante}">
+                    <h2>${donation.nombreDonante}</h2>
+                    <p>${donation.nombreMed} - ${donation.cantidadMedicamento} unidades</p>
+                    <p>${donation.fechaVto}</p>
+                `;
+                donationsContainer.appendChild(donationElement);
+            });
+        })
+        .catch(error => console.error('Error al obtener las donaciones:', error));
+
+    fetch('/api/requests')
+        .then(response => response.json())
+        .then(requests => {
+            const requestsContainer = document.getElementById('requests');
+            requests.forEach(request => {
+                const requestElement = document.createElement('div');
+                requestElement.className = 'grid-item';
+                requestElement.innerHTML = `
+                    <img src="${request.logoUrl || 'https://via.placeholder.com/100'}" alt="${request.nombre}">
+                    <h2>${request.nombre}</h2>
+                    <p>${request.diagnostico.join(', ')}</p>
+                    <p>${request.cobertura} - ${request.obraSocial || request.prepaga}</p>
+                `;
+                requestsContainer.appendChild(requestElement);
+            });
+        })
+        .catch(error => console.error('Error al obtener los pedidos:', error));
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const nombreMedicamento = document.getElementById("nombreMedicamento");
-    const otroMedicamento = document.getElementById("otroMedicamento");
-    const presentacionMedicamento = document.getElementById("presentacionMedicamento");
-    const otraPresentacion = document.getElementById("otraPresentacion");
-
-    nombreMedicamento.addEventListener("change", function() {
-        otroMedicamento.style.display = this.value === "Otro" ? "block" : "none";
-    });
-
-    presentacionMedicamento.addEventListener("change", function() {
-        otraPresentacion.style.display = this.value === "Otro" ? "block" : "none";
-    });
-});
+function search() {
+    // Implementar la funcionalidad de búsqueda aquí
+}

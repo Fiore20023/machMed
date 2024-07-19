@@ -13,19 +13,15 @@
     </header>
     
     <main>
+        
         <form action="../BACK/submit_donation.php" method="POST" enctype="multipart/form-data" class="medication-form">
         
-            <!-- Logo de la Asociación -->
- <img src="images/logo.png" alt="Logo de la asociacion" id="associationLogo" name="associationLogo" readonly required>
-     
- <!-- Nombre del Usuario --><p for="userName">Nombre del Usuario<id="userName" name="userName" readonly required>
-           
     <fieldset>
         <legend>Datos de Quien Dona</legend>
         <label for="nombreDonante">Nombre</label>  <input type="hidden" name="donante_id" value="nombreDonante">
             <input type="text" id="nombreDonante" name="nombreDonante" placeholder="Nombre"  required>
-            <label for="apellido">Apellido</label>
-            <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+            <label for="apellido_donante">Apellido</label>
+            <input type="text" id="apellido_donante" name="apellido_donante" placeholder="Apellido" required>
             <label for="dni">Número de DNI</label>
             <input type="text" id="dni" name="dni" placeholder="Número de DNI" required>
         <label for="telefono">Teléfono</label>
@@ -46,8 +42,8 @@
 
             <fieldset>
                 <legend>Medicamento Donado</legend>
-                <label for="nombreMedicamento">Nombre</label>
-                <select id="nombreMedicamento" name="nombreMedicamento" required>
+                <label for="nombreMed">Nombre</label>
+                <select id="nombreMed" name="nombreMed" required>
                     <option value="Alendronato">Alendronato</option>
                     <option value="Amlodipina">Amlodipina</option>
                     <option value="Amoxicilina">Amoxicilina</option>
@@ -104,8 +100,8 @@
                 <input type="text" id="otroMedicamento" name="otroMedicamento" placeholder="Especificar otro medicamento" style="display:none;">
                 <label for="laboratorio">Laboratorio</label>
             <input type="text" id="laboratorio" name="laboratorio" placeholder="Nombre del Laboratorio" required>
-                <label for="presentacionMedicamento">Presentación</label>
-                <select id="presentacionMedicamento" name="presentacionMedicamento" required>
+                <label for="presentacion">Presentación</label>
+                <select id="presentacion" name="presentacion" required>
                     <option value="Tabletas">Tabletas</option>
                     <option value="Cápsulas">Cápsulas</option>
                     <option value="Jarabe">Jarabe</option>
